@@ -1,5 +1,6 @@
 """Tests for Module 5: Enrichment Pipeline."""
 import sys, os
+import pytest
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from src.m5_enrichment import (
     summarize_chunk, generate_hypothesis_questions,
@@ -11,6 +12,10 @@ CHUNKS = [
     {"text": SAMPLE, "metadata": {"source": "policy.md"}},
     {"text": "Mật khẩu phải thay đổi mỗi 90 ngày.", "metadata": {"source": "it.md"}},
 ]
+
+@pytest.fixture(autouse=True)
+def no_external_api(monkeypatch):
+    monkeypatch.setattr("src.m5_enrichment.get_llm_client", lambda: None)
 
 
 def test_summarize_returns_string():

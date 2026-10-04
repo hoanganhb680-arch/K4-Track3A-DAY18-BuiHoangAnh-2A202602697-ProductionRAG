@@ -57,7 +57,7 @@ python -m venv .venv
 ```bash
 docker compose up -d                    # Khởi động Qdrant vector database
 pip install -r requirements.txt
-cp .env.example .env                    # Tạo file .env và điền OPENAI_API_KEY
+cp .env.example .env                    # Điền DEEPSEEK_API_KEY, GEMINI_API_KEY hoặc OPENAI_API_KEY
 python naive_baseline.py                # Khởi tạo baseline
 ```
 
@@ -65,10 +65,12 @@ python naive_baseline.py                # Khởi tạo baseline
 ```powershell
 docker compose up -d                    # Khởi động Qdrant vector database
 pip install -r requirements.txt
-Copy-Item .env.example .env             # Tạo file .env và điền OPENAI_API_KEY
+Copy-Item .env.example .env             # Điền DEEPSEEK_API_KEY, GEMINI_API_KEY hoặc OPENAI_API_KEY
 python naive_baseline.py                # Khởi tạo baseline
 ```
 *(Nếu dùng Windows CMD: dùng `copy .env.example .env` thay cho `Copy-Item`)*
+
+Nếu có `GEMINI_API_KEY`, pipeline mặc định dùng `gemini-3.1-flash-lite`; chọn `LLM_PROVIDER=deepseek` để dùng DeepSeek khi key hợp lệ. Bốn điểm trong report chỉ hợp lệ khi `evaluation_status` là `ragas`.
 
 ## Chạy toàn bộ & Kiểm tra
 
@@ -104,7 +106,7 @@ K4-Track3A-Production-RAG/
 │   └── Nghi_dinh_so_13-2023_ve_bao_ve_du_lieu_ca_nhan_508ee.pdf # Nghị định BVDL (scan, cần OCR)
 ├── test_set.json               # 20 Q&A pairs (6 types: lookup, version, negation, multi-hop, numeric, ambiguous)
 │
-├── src/                        # ★ Scaffold code (có TODO markers)
+├── src/                        # ★ 5 modules đã hoàn thiện
 │   ├── m1_chunking.py          # Module 1: Chunking
 │   ├── m2_search.py            # Module 2: Hybrid Search
 │   ├── m3_rerank.py            # Module 3: Reranking

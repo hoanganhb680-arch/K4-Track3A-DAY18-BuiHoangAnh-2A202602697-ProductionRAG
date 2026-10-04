@@ -1,0 +1,14 @@
+{
+  "aggregate": {
+    "faithfulness": 0.8875,
+    "answer_relevancy": 0.7972,
+    "context_precision": 0.65,
+    "context_recall": 0.8,
+    "evaluation_status": "ragas"
+  },
+  "num_questions": 20,
+  "evaluated_questions": 20,
+  "failures": [],
+  "cases": [],
+  "query_latency_ms": {}
+}
